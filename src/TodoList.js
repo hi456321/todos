@@ -9,7 +9,8 @@ function Todo({ todo }) {
     );
 };
 
-function TodoList() {
+function TodoList({ todos }) {
+    /*
     const todos = [
         {
             id: 1,
@@ -17,6 +18,7 @@ function TodoList() {
             period: "오늘까지"
         }
     ];
+    */
 
     return (
         <table>
