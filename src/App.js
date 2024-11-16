@@ -37,13 +37,17 @@ function App() {
     nextId.current += 1;
   };
 
+  const onRemove = id => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
     <>
       <h1>JSY - Todo List</h1>
       <br />
       <CreateTodo todo={todo} period={period} onChange={onChange} onCreate={onCreate} />
       <br />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onRemove={onRemove} />
     </>
   );
 }

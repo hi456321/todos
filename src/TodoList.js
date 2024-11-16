@@ -1,15 +1,15 @@
 import React from 'react';
 
-function Todo({ todo }) {
+function Todo({ todo, onRemove }) {
     
     return (
         <tr>
-            <td>{todo.todo}</td><td>{todo.period}</td><td><button>삭제</button></td>
+            <td>{todo.todo}</td><td>{todo.period}</td><td><button onClick={() => onRemove(todo.id)}>삭제</button></td>
         </tr>
     );
 };
 
-function TodoList({ todos }) {
+function TodoList({ todos, onRemove }) {
     /*
     const todos = [
         {
@@ -24,7 +24,7 @@ function TodoList({ todos }) {
         <table>
             <th>할 일</th><th>기한</th><th>삭제</th>
             {todos.map(todo => (
-                <Todo todo={todo} key={todo.id} />
+                <Todo todo={todo} key={todo.id} onRemove={onRemove} />
             ))}
         </table>
     );
