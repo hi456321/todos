@@ -3,6 +3,9 @@ import SearchData from "./component/SearchData";
 import DataList from "./component/DataList";
 import axiosModule from "./utils/axios/axios";
 
+const url = process.env.REACT_APP_DATA_API_URL;
+const serviceKey = process.env.REACT_APP_DATA_API_KEY;
+
 function App() {
   const [inputs, setInputs] = useState({
     page: '1',
@@ -21,14 +24,7 @@ function App() {
 
   const onSearch = async () => {
 
-    const response = await axiosModule({
-      type: 'get', 
-      url: process.env.REACT_APP_DATA_API_URL, 
-      params: {
-        serviceKey: process.env.REACT_APP_DATA_API_KEY,
-        pageIndex: page,
-        recordCountPerPage: record
-      }});
+    const response = await axiosModule({ type: 'get', url, params: { serviceKey, pageIndex: page, recordCountPerPage: record }});
 
       if(response !== null) {
         console.log(response);
