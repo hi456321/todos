@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import axios from "axios";
 import SearchData from "./component/SearchData";
 import DataList from "./component/DataList";
+import axiosModule from "./utils/axios/axios";
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -19,17 +19,22 @@ function App() {
 
   const [dataArr, setDataArr] = useState([]);
 
-  const onSearch = () => {
-    axios.get(process.env.DATA_API_URL, {
+  const onSearch = async () => {
+
+    const response = await axiosModule({
+      type: 'get', 
+      url: process.env.REACT_APP_DATA_API_URL, 
       params: {
-        serviceKey: process.env.DATA_API_KEY,
+        serviceKey: process.env.REACT_APP_DATA_API_KEY,
         pageIndex: page,
         recordCountPerPage: record
-      }
-    }).then(response => {
-        console.log('api 응답 ==>');
+      }});
+
+      if(response !== null) {
         console.log(response);
-    });
+        // setState
+      }
+
   };
 
   return (
