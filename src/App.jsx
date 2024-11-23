@@ -20,9 +20,9 @@ function App() {
   const [dataArr, setDataArr] = useState([]);
 
   const onSearch = () => {
-    axios.get("https://apis.data.go.kr/1741000/exfc4/getExfc4", {
+    axios.get(process.env.DATA_API_URL, {
       params: {
-        serviceKey: 'Xd4qzzVK7H8aEvngC/CUy9SM3dADxWscfd5BLkgKGL/SjKScVpzAPN8yLCgkioioqQWqS174F5n4icaYAcwozg==',
+        serviceKey: process.env.DATA_API_KEY,
         pageIndex: page,
         recordCountPerPage: record
       }
