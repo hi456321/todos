@@ -24,14 +24,18 @@ function DataList() {
 
     return (
         <table>
-            <tr>
-                <th>놀이시설명</th><th>우수시설지정일</th><th>조직명</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>놀이시설명</th><th>우수시설지정일</th><th>조직명</th>
+                </tr>
+            </thead>
+            <tbody>
             {
                 dataArr.map(item => (
                     <Data data={item} key={item.exfcSn} />
                 ))
             }
+            </tbody>
         </table>
     );
 }
