@@ -27,8 +27,10 @@ function App() {
     const response = await axiosModule({ type: 'get', url, params: { serviceKey, pageIndex: page, recordCountPerPage: record }});
 
       if(response !== null) {
-        console.log(response);
+        //console.log(response.data.response.body.items);
         // setState
+        const items = response.data.response.body.items;
+        setDataArr(items);
       }
 
   };
@@ -39,7 +41,7 @@ function App() {
       <br />
       <SearchData page={page} record={record} onChange={onChange} onSearch={onSearch} />
       <br />
-      <DataList />
+      <DataList dataArr={dataArr} />
     </>
   );
 }

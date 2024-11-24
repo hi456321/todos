@@ -8,7 +8,8 @@ function Data({data}) {
     );
 }
 
-function DataList() {
+function DataList({dataArr}) {
+    /*
     const dataArr = [
         {"exfcSn":"891","dsgnYmd":"20121018","pfctSn":"529870","rgnCd":"3011011000","fctyCd":"15","rgnNm":null,"pfctNm":"대동펜타뷰아파트어린이놀이터2","rmk":"대전광역시 우수어린이놀이시설 / 대전광역시 공고 제2012-1247호","instSn":"0","instNm":"시스템운영관리자","latCrtsVl":"36.327546","lotCrtsVl":"127.4458504"},
         {"exfcSn":"887","dsgnYmd":"20120928","pfctSn":"38146","rgnCd":"4128510100","fctyCd":"82","rgnNm":null,"pfctNm":"위시티일산자이아파트2단지 210동 놀이터","rmk":"경기 고양시","instSn":"0","instNm":"시스템운영관리자","latCrtsVl":"37.677304","lotCrtsVl":"126.8137384"},
@@ -21,6 +22,7 @@ function DataList() {
         {"exfcSn":"928","dsgnYmd":"20120928","pfctSn":"529260","rgnCd":"4115010400","fctyCd":"147","rgnNm":null,"pfctNm":"청룡보듬이나눔어린이집 놀이터","rmk":"우수 어린이 놀이시설 지정(경기도 제2012-021) 및 경기도지사 표창","instSn":"0","instNm":"시스템운영관리자","latCrtsVl":"37.7315413","lotCrtsVl":"127.0567956"},
         {"exfcSn":"889","dsgnYmd":"20121023","pfctSn":"40296","rgnCd":"4477025300","fctyCd":"14","rgnNm":null,"pfctNm":"서천사곡휴먼시아아파트어린이놀이터","rmk":"2012년도 충청남도 우수어린이놀이시설 선정","instSn":"0","instNm":"시스템운영관리자","latCrtsVl":"36.0847774","lotCrtsVl":"126.6854067"}
     ];
+    */
 
     return (
         <table>
