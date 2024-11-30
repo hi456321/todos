@@ -1,29 +1,15 @@
 import React from "react";
-import axios from "axios";
+import axiosModule from "./utils/axios";
+import YoutubeList from "./component/YoutubeList";
+import sampleResponse from "./sampleResponse";
 
 const url = "https://www.googleapis.com/youtube/v3/search";
 const key = "AIzaSyB1WGfZWy0unpgOQMLm3-MBj4Zib_JuUjA";
 
-/**
- * @param data type, url, param을 받아 response를 리턴
- */
-const axiosModule = async (data) => {
-  try {
-    const response = await axios[data.type](data.url, { params: data.params });
-    
-    if (response.status === 200) {
-      return response; 
-    } else {
-      console.log(`Request failed with status: ${response.status}`);
-      return null; 
-    }
-  } catch (error) {
-    console.log('axios error!!', error);
-    return null; 
-  }
-};
+const sample = sampleResponse;
 
 function App() {
+  console.log(sample);
 
   const onSearch = async () => {
 
@@ -37,8 +23,25 @@ function App() {
 
   return (
     <>
-      <h1>Youtube 검색</h1>
-      <button onClick={onSearch}>조회</button>
+      {/*<h1>Youtube 검색</h1>
+      <button onClick={onSearch}>조회</button>*/}
+      <main>
+        <section className="py-5 text-center container">
+        <div className="row py-lg-5">
+          <div className="col-lg-6 col-md-8 mx-auto">
+          <h1 className="fw-light">Album example</h1>
+          <p className="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+          <p>
+            <a href="#" className="btn btn-primary my-2">Main call to action</a>
+            <a href="#" className="btn btn-secondary my-2">Secondary action</a>
+          </p>
+          </div>
+        </div>
+        </section>
+        <div className="album py-5 bg-light">
+          <YoutubeList youtubeList={sample.data.items}/>
+        </div>
+      </main>
     </>
   );
 }
