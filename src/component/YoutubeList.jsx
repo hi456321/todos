@@ -1,6 +1,8 @@
 import React from "react";
 
-function YoutubeItem({youtubeItem}) {
+function YoutubeItem({youtubeItem, key}) {
+    console.log(youtubeItem)
+    console.log(youtubeItem)
     const imageStyle = {
         width: '100%',
         height: '300px'
@@ -22,6 +24,8 @@ function YoutubeItem({youtubeItem}) {
 }
 
 function YoutubeList({youtubeList}) {
+    // 여기 왜 jsx 문법 안써요..
+    return (
     <div className="container">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {
@@ -31,6 +35,7 @@ function YoutubeList({youtubeList}) {
         }
         </div>
     </div>
+    )
 }
 
 export default YoutubeList;
