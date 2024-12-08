@@ -2,6 +2,7 @@ import React from "react";
 import axiosModule from "./utils/axios";
 import YoutubeList from "./component/YoutubeList";
 import sampleResponse from "./sampleResponse";
+import VideoPop from "./component/VideoPop";
 
 const url = "https://www.googleapis.com/youtube/v3/search";
 const key = "AIzaSyB1WGfZWy0unpgOQMLm3-MBj4Zib_JuUjA";
@@ -13,7 +14,7 @@ function App() {
 
   const onSearch = async () => {
 
-    const response = await axiosModule({ type: 'get', url, params: { key, part: 'snippet', q: '로제+아파트'}});
+    const response = await axiosModule({ type: 'get', url, params: { key, part: 'snippet', type: 'video', q: '로제+아파트'}});
 
     if(response !== null) {
       console.log(response);
@@ -41,6 +42,7 @@ function App() {
         <div className="album py-5 bg-light">
           <YoutubeList youtubeList={sample.data.items}/>
         </div>
+        <VideoPop />
       </main>
     </>
   );
