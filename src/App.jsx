@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import axiosModule from "./utils/axios";
 import YoutubeList from "./component/YoutubeList";
 import sampleResponse from "./sampleResponse";
@@ -11,6 +11,13 @@ const sample = sampleResponse;
 
 function App() {
   console.log(sample);
+
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    console.log("closeModal called!!!");
+    setModal(false);
+  };
 
   const onSearch = async () => {
 
@@ -26,6 +33,7 @@ function App() {
     <>
       {/*<h1>Youtube 검색</h1>
       <button onClick={onSearch}>조회</button>*/}
+      <button onClick={() => setModal(true)}>모달켜기</button>
       <main>
         <section className="py-5 text-center container">
         <div className="row py-lg-5">
@@ -41,8 +49,11 @@ function App() {
         </section>
         <div className="album py-5 bg-light">
           <YoutubeList youtubeList={sample.data.items}/>
+          {
+            modal &&
+            <VideoPop closeModal={closeModal}/>
+          }
         </div>
-        <VideoPop />
       </main>
     </>
   );
