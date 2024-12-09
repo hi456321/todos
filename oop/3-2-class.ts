@@ -42,6 +42,7 @@
     console.log(maker2)
     const maker3 = CoffeeMaker.makeMachine(24);
     console.log(maker3)
+    console.log(CoffeeMaker.BEANS_GRAMM_PER_SHOT);
 
     // 비슷한 예로 Math.PI도 Math 클래스 내부의 PI함수를 static으로 선언하여
     // 인스턴스를 생성하지 않고 클래스 레벨에서 바로 호출 가능 
