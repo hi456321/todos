@@ -9,12 +9,12 @@ type MoveResult = {
     y: number 
 }
 
-let position: MoveResult ={
+const position: MoveResult ={
     x: 0,
     y: 0
 }
 
-const move = (moveType: MoveType): MoveResult => {
+const move = (moveType: MoveType) => {
     switch(moveType) {
         case 'up':
             position.y = position.y + 1
@@ -29,7 +29,6 @@ const move = (moveType: MoveType): MoveResult => {
             position.x = position.x + 1
             break; 
     }
-    return position;
 }
 
 console.log(position); // { x: 0, y: 0}
