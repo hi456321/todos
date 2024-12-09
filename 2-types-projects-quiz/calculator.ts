@@ -11,6 +11,7 @@ const calculate = (command: Command, a: number, b: number): number =>{
         case 'multiply': return a * b;
         case 'divide': return a / b;
         case 'remainder': return a % b;
+        default: throw new Error('unknown Error')
     }
 }
 
