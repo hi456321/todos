@@ -1,12 +1,20 @@
 {
     
     /**
-     * 다형성
-     * 다형성은 동일한 메서드가 여러 객체에서 다르게 동작하게 만드는 특성입니다. 
-     * 주로 상속을 통해 메서드를 오버라이딩하여 구현되며, 
-     * 같은 이름의 메서드라도 객체에 따라 다르게 동작합니다.
+     * Composition(조합)
+     * 상속의 문제점의 대안으로 Composition 사용
+     * 상속의 문제점
+     * 1. 상속의 깊이가 깊어질 수록 복잡도가 상승한다.
+     * 2. ts에서는 2개 이상의 부모 클래스를 상속 받을 수 없다.
      * 
-     * 아래 코드에서는 makeCoffee가 각 클래스에서 사용되지만 다르게 동작함.
+     * 조합은 객체가 다른 객체를 포함하거나 다른 객체의 기능을 활용하는 방식입니다.
+     * 즉, "has-a" 관계를 사용하는 방식으로, 자신의 기능을 다른 객체와 결합하여 구현하는 방법입니다.
+     * 
+     * 조합은 "내가 할 수 있는 기능을 다른 객체에 위임"하는 방식입니다.
+     * 객체 간에 기능을 재사용할 수 있으며, 클래스들이 서로 느슨하게 결합되기 때문에 
+     * 유연성과 확장성이 뛰어납니다.
+     * 
+     * => (결론) 각각 필요한 기능들을 클래스로 빼서, 필요한 곳에서 가져다 쓰면 됨
     */
     type CoffeeCup = {
         shots: number;
@@ -86,29 +94,39 @@
         }
     }
 
-    // CoffeeCup에 sugar 추가
-    class SweetLatteCoffeeMaker extends CaffeLatteMachine {
-        makeCoffee(shots: number): CoffeeCup {
-            const coffee = super.makeCoffee(shots);
+    class AddSugerForCoffee {
+        private addSugar(): void {
+            console.log('adding sugar for coffee...')
+        }
+        makeMilk(cup: CoffeeCup): CoffeeCup{
             return {
-                ...coffee,
-                hasMilk: true,
+                ...cup,
                 hasSugar: true
             }
         }
     }
 
-    const machines = [
-        new CoffeeMachine(16),
-        new CaffeLatteMachine(16, '1'),
-        new SweetLatteCoffeeMaker(16),
-        new CoffeeMachine(16),
-        new CaffeLatteMachine(16, '1'),
-        new SweetLatteCoffeeMaker(16),
-    ]
+    class AddMilkForCoffee {
+        private addMilk(): void {
+            console.log('adding sugar for coffee...')
+        }
+        makeMilk(cup: CoffeeCup): CoffeeCup{
+            return {
+                ...cup,
+                hasMilk: true
+            }
+        }
+    }
 
-    machines.forEach((machine)=> {
-        console.log('-----------------------------------------')
-        console.log(machine.makeCoffee(1));
-    })
+    // CoffeeCup에 sugar 추가
+    class SweetLatteCoffeeMaker extends CaffeLatteMachine {
+        constructor(private beans: number, private milk: AddMilkForCoffee, private sugar: AddSugerForCoffee){
+            super(beans);
+        }
+        makeCoffee(shots: number): CoffeeCup {
+            const coffee = super.makeCoffee(shots);
+            return this.milk.makeMilk(this.sugar.makeMilk(coffee))
+        }
+    }
+
 }
