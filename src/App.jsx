@@ -4,8 +4,8 @@ import YoutubeList from "./component/YoutubeList";
 import sampleResponse from "./sampleResponse";
 import VideoPop from "./component/VideoPop";
 
-const url = "https://www.googleapis.com/youtube/v3/search";
-const key = "AIzaSyB1WGfZWy0unpgOQMLm3-MBj4Zib_JuUjA";
+const url = process.env.REACT_APP_YOUTUBE_API_URL;
+const key = process.env.REACT_APP_YOUTUBE_API_KEY;
 
 const sample = sampleResponse;
 
@@ -47,8 +47,8 @@ function App() {
   return (
     <>
       {/*<h1>Youtube 검색</h1>
-      <button onClick={onSearch}>조회</button>*/}
-      <button onClick={() => setModal(true)}>모달켜기</button>
+      <button onClick={onSearch}>조회</button>
+      <button onClick={() => setModal(true)}>모달켜기</button>*/}
       <main>
         <section className="py-5 text-center container">
           <div className="row py-lg-5">

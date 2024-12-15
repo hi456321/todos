@@ -1,5 +1,7 @@
 import React from "react";
 
+const url = process.env.REACT_APP_YOUTUBE_URL;
+
 function VideoPop({ youtubeId, toggleModal }) {
   // 유튜브 url에 youtubeId이것만 붙이면 영상 나옴
   // 유튜브 url은 상수로 선언해서 가져다 쓸 것
@@ -24,7 +26,7 @@ function VideoPop({ youtubeId, toggleModal }) {
                 type="text/html"
                 width="100%"
                 height="500"
-                data=""
+                data={url+youtubeId+"rel=0"}
                 allowFullScreen
               />
             </div>
