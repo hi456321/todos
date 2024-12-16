@@ -26,7 +26,7 @@ function VideoPop({ youtubeId, toggleModal }) {
                 type="text/html"
                 width="100%"
                 height="500"
-                data={url+youtubeId+"rel=0"}
+                data={url+youtubeId+"?rel=0"}
                 allowFullScreen
               />
             </div>

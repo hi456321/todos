@@ -19,15 +19,12 @@ function App() {
   // 모달을 닫을 때는 toggleModal(false)로.. 단순 state 변경이 아닌 로직이 필요한 경우에는 함수로 빼는 게 좋음..
   // toggleModal을 YoutubeList 컴포넌트에 props로 넘겨주면 될 거 같음..
 
+  const [youtubeList, setYoutubeList] = useState([]);
+
   const toggleModal = (isActive = false, id) => {
     setModal(isActive);
     setYoutbeId(id);
     // youtube_id가 있으면서 isActive가 true인 경우
-  };
-
-  const closeModal = () => {
-    console.log("closeModal called!!!");
-    setModal(false);
   };
 
   // API 테스트는 못하니, 배열에 find로 조회하는 정도로 Search 기능 구현하면 될 듯
@@ -40,15 +37,15 @@ function App() {
     });
 
     if (response !== null) {
-      console.log(response);
+      setYoutubeList(response.data.items);
     }
   };
 
   return (
     <>
-      {/*<h1>Youtube 검색</h1>
+      <h1>Youtube 검색</h1>
       <button onClick={onSearch}>조회</button>
-      <button onClick={() => setModal(true)}>모달켜기</button>*/}
+      {/*<button onClick={() => setModal(true)}>모달켜기</button>*/}
       <main>
         <section className="py-5 text-center container">
           <div className="row py-lg-5">
@@ -72,7 +69,7 @@ function App() {
         </section>
         <div className="album py-5 bg-light">
           <YoutubeList
-            youtubeList={sample.data.items}
+            youtubeList={youtubeList}
             toggleModal={toggleModal}
           />
           {modal && (
