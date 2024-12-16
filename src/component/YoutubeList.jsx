@@ -30,7 +30,7 @@ function YoutubeItem({ youtubeItem, toggleModal }) {
     <div className="col">
       <div
         className="card shadow-sm"
-        onClick={() => toggleModal(true, youtubeItem.id.videoId)}
+        onClick={() => toggleModal(true, youtubeItem)}
       >
         <img
           className="imageStyle"

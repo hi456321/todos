@@ -13,17 +13,19 @@ function App() {
   console.log(sample);
 
   const [modal, setModal] = useState(false);
-  const [youtubeId, setYoutbeId] = useState("");
+  //const [youtubeId, setYoutbeId] = useState("");
   // closeModal 말고 togleModal로 하나 만들어서 토글 시키는 게 좋을 듯..
   // 모달이 영상을 보여주는 게 목적이라면 영상 썸네일 클릭시 toggleModal(true, video_id)와 같이 하면 어떨 지?
   // 모달을 닫을 때는 toggleModal(false)로.. 단순 state 변경이 아닌 로직이 필요한 경우에는 함수로 빼는 게 좋음..
   // toggleModal을 YoutubeList 컴포넌트에 props로 넘겨주면 될 거 같음..
 
   const [youtubeList, setYoutubeList] = useState([]);
+  const [youtubeItem, setYoutubeItem] = useState({});
 
-  const toggleModal = (isActive = false, id) => {
+  const toggleModal = (isActive = false, item) => {
     setModal(isActive);
-    setYoutbeId(id);
+    setYoutubeItem(item);
+    //setYoutbeId(id);
     // youtube_id가 있으면서 isActive가 true인 경우
   };
 
@@ -73,7 +75,7 @@ function App() {
             toggleModal={toggleModal}
           />
           {modal && (
-            <VideoPop youtubeId={youtubeId} toggleModal={toggleModal} />
+            <VideoPop youtubeItem={youtubeItem} toggleModal={toggleModal} />
           )}
         </div>
       </main>
